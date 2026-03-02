@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Dynamic Exam System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="dashboard-container w-full">
+        <div class="glass-container fade-in" style="max-width: 1000px;">
+            <div class="top-bar">
+                <div class="header" style="margin-bottom: 0; text-align: left;">
+                    <h1>Student Portal</h1>
+                </div>
+                <div class="user-info">
+                    Welcome, <span id="userName">Student</span>
+                    <button class="btn btn-secondary" style="width: auto; padding: 8px 15px; margin-left: 15px;"
+                        onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Dashboard View -->
+            <div id="dashboardView">
+                <h2 style="margin-bottom: 20px;">Available Exams</h2>
+                <div class="grid-cards" id="examsList">
+                    <!-- Exams will be loaded here -->
+                    <p>Loading exams...</p>
+                </div>
+
+                <h2 style="margin-top: 40px; margin-bottom: 20px;">My Results</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Exam Name</th>
+                            <th>Score</th>
+                            <th>Date Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody">
+                        <!-- Results will be loaded here -->
+                        <tr>
+                            <td colspan="3">Loading results...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Exam Taking View -->
+            <div id="examView" class="hidden">
+                <div class="top-bar" style="border: none;">
+                    <h2 id="examTitle">Exam Title</h2>
+                    <div class="timer" id="examTimer">00:00</div>
+                </div>
+                <p id="examDescription" style="color: #94a3b8; margin-bottom: 30px;"></p>
+
+                <form id="examForm">
+                    <div id="questionsContainer">
+                        <!-- Questions will be loaded here -->
+                    </div>
+                    <button type="submit" class="btn" style="max-width: 200px;">Submit Exam</button>
+                    <button type="button" class="btn btn-secondary" style="max-width: 200px; margin-left: 10px;"
+                        onclick="cancelExam()">Cancel</button>
+                </form>
+            </div>
+
+            <!-- Result View -->
+            <div id="resultView" class="hidden" style="text-align: center; padding: 40px 0;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Exam Completed!</h2>
+                <div style="font-size: 4rem; font-weight: 700; color: var(--primary-color); margin: 20px 0;"
+                    id="finalScoreDisplay">--/--</div>
+                <p style="font-size: 1.2rem; margin-bottom: 30px;">Percentage: <span id="finalPercentage">--</span>%</p>
+                <button class="btn" style="max-width: 200px;" onclick="backToDashboard()">Back to Dashboard</button>
+            </div>
+
+        </div>
+        <div id="notification" class="notification hidden"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/student.js"></script>
+</body>
+
+</html>
